@@ -2,7 +2,6 @@ import { Directive, ElementRef, HostListener } from '@angular/core';
 
 @Directive({
   selector: '[zoom]',
-  exportAs: 'zoom',
 })
 export class ZoomDirective {
   constructor(private el: ElementRef) {
