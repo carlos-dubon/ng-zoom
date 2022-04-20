@@ -1,16 +1,10 @@
 import { NgModule } from '@angular/core';
 import { NgZoomComponent } from './ng-zoom.component';
-
-
+import { ZoomDirective } from './zoom.directive';
 
 @NgModule({
-  declarations: [
-    NgZoomComponent
-  ],
-  imports: [
-  ],
-  exports: [
-    NgZoomComponent
-  ]
+  declarations: [NgZoomComponent, ZoomDirective],
+  imports: [],
+  exports: [NgZoomComponent, ZoomDirective],
 })
-export class NgZoomModule { }
+export class NgZoomModule {}

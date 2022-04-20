@@ -6,7 +6,11 @@
     "start": "ng serve",
     "build": "ng build",
     "watch": "ng build --watch --configuration development",
-    "test": "ng test"
+    "test": "ng test",
+    "serve:example": "ng serve",
+    "build:example": "ng build example",
+    "build:lib": "ng build ng-zoom",
+    "publish:lib": "ng build ng zoom && cd dist/ng-zoom && npm publish"
   },
   "private": true,
   "dependencies": {
