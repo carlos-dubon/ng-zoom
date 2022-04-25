@@ -4,6 +4,7 @@ import {
   InjectionToken,
   ModuleWithProviders,
   NgModule,
+  Optional,
 } from '@angular/core';
 import { ZoomDirective } from './zoom.directive';
 import css from './styles/styles';
@@ -23,7 +24,9 @@ const NgZoomConfigService = new InjectionToken<NgZoomConfig>('NgZoomConfig');
 export class NgZoomModule {
   constructor(
     @Inject(DOCUMENT) private document: Document,
-    @Inject(NgZoomConfigService) private config: NgZoomConfig
+    @Optional()
+    @Inject(NgZoomConfigService)
+    private config: NgZoomConfig
   ) {
     console.log(this.config);
     this.injectStyles();

@@ -8,11 +8,7 @@ import { NgZoomModule } from 'ng-zoom';
 
 @NgModule({
   declarations: [AppComponent],
-  imports: [
-    BrowserModule,
-    AppRoutingModule,
-    NgZoomModule.forRoot({ backgroundColor: '#000' }),
-  ],
+  imports: [BrowserModule, AppRoutingModule, NgZoomModule],
   providers: [],
   bootstrap: [AppComponent],
 })
