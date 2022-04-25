@@ -1,18 +1,16 @@
 import { Directive, ElementRef, HostListener } from '@angular/core';
 
 @Directive({
-  selector: '[zoom]',
+  selector: '[ng-zoom]',
 })
 export class ZoomDirective {
-  constructor(private el: ElementRef) {
-    this.el.nativeElement.style.backgroundColor = 'yellow';
+  constructor(private el: ElementRef) {}
+
+  @HostListener('click') elClicked() {
+    console.log('clicker');
   }
 
-  @HostListener('mouseenter') onMouseEnter() {
-    console.log('enter');
-  }
-
-  @HostListener('mouseleave') onMouseLeave() {
-    console.log('leave');
+  ngOnInit() {
+    console.log('ZoomDirective.ngOnInit');
   }
 }

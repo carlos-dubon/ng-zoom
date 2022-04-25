@@ -3,6 +3,5 @@
  */
 
 export * from './lib/ng-zoom.service';
-export * from './lib/ng-zoom.component';
 export * from './lib/ng-zoom.module';
 export * from './lib/zoom.directive';
