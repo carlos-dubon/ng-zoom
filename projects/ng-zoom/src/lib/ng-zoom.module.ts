@@ -2,11 +2,7 @@ import { DOCUMENT } from '@angular/common';
 import { Inject, ModuleWithProviders, NgModule, Optional } from '@angular/core';
 import { ZoomDirective } from './zoom.directive';
 import { injectStyles } from './styles/styles';
-import {
-  defaultConfig,
-  NgZoomConfigService,
-  NgZoomConfig,
-} from './config.service';
+import { ConfigService, ConfigToken, NgZoomConfig } from './config.service';
 
 @NgModule({
   declarations: [ZoomDirective],
@@ -17,25 +13,18 @@ export class NgZoomModule {
   constructor(
     @Inject(DOCUMENT) private document: Document,
     @Optional()
-    @Inject(NgZoomConfigService)
-    private config: NgZoomConfig
+    @Inject(ConfigToken)
+    private config: NgZoomConfig,
+    private configService: ConfigService
   ) {
-    this.setConfig();
-    injectStyles(this.document, this.config);
+    this.configService.config = this.config;
+    injectStyles(this.document, this.configService.config);
   }
 
   static forRoot(config: NgZoomConfig): ModuleWithProviders<NgZoomModule> {
     return {
       ngModule: NgZoomModule,
-      providers: [{ provide: NgZoomConfigService, useValue: config }],
+      providers: [{ provide: ConfigToken, useValue: config }],
     };
-  }
-
-  private setConfig(): void {
-    if (!this.config) {
-      this.config = defaultConfig;
-    } else {
-      this.config = { ...defaultConfig, ...this.config };
-    }
   }
 }

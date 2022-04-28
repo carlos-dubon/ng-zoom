@@ -1,4 +1,4 @@
-import { InjectionToken } from '@angular/core';
+import { Injectable, InjectionToken } from '@angular/core';
 
 export interface NgZoomConfig {
   /**
@@ -11,12 +11,29 @@ export interface NgZoomConfig {
   scaleUp?: boolean;
 }
 
-const defaultConfig: NgZoomConfig = {
-  backgroundColor: '#fffff',
-  scaleUp: true,
-};
-
 // InjectionToken (which prevents collisions) and useValue.
-const NgZoomConfigService = new InjectionToken<NgZoomConfig>('NgZoomConfig');
+const ConfigToken = new InjectionToken<NgZoomConfig>('NgZoomConfig');
 
-export { NgZoomConfigService, defaultConfig };
+@Injectable({
+  providedIn: 'root',
+})
+class ConfigService {
+  private defaultConfig: NgZoomConfig = {
+    backgroundColor: '#fffff',
+    scaleUp: true,
+  };
+
+  private configValue: NgZoomConfig = this.defaultConfig;
+
+  constructor() {}
+
+  get config(): NgZoomConfig {
+    return this.configValue;
+  }
+
+  set config(config: NgZoomConfig) {
+    this.configValue = { ...this.defaultConfig, ...config };
+  }
+}
+
+export { ConfigService, ConfigToken };

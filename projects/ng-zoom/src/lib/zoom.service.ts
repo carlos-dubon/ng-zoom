@@ -1,7 +1,7 @@
 import { DOCUMENT } from '@angular/common';
 import { Inject, Injectable, Optional } from '@angular/core';
 import { debounce } from 'throttle-debounce';
-import { NgZoomConfig, NgZoomConfigService } from './config.service';
+import { ConfigService } from './config.service';
 import { sumStyleDeclarationValues } from './helpers/sumStyleDeclarationValues';
 
 @Injectable({
@@ -13,9 +13,7 @@ export class ZoomService {
 
   constructor(
     @Inject(DOCUMENT) private document: Document,
-    @Optional()
-    @Inject(NgZoomConfigService)
-    private config: NgZoomConfig
+    private configService: ConfigService
   ) {
     this.window = this.document.defaultView as Window;
   }
@@ -62,7 +60,7 @@ export class ZoomService {
     const vw: number = this.window.innerWidth;
     const vh: number = this.window.innerHeight;
 
-    console.log(this.config);
+    console.log(this.configService.config);
   }
 
   private zoomOut() {

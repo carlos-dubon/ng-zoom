@@ -1,4 +1,4 @@
-import type { NgZoomConfig } from './../config.service';
+import { NgZoomConfig } from '../config.service';
 interface Props {
   backgroundColor?: string;
 }
