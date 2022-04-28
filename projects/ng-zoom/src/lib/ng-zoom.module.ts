@@ -1,20 +1,9 @@
 import { DOCUMENT } from '@angular/common';
-import {
-  Inject,
-  InjectionToken,
-  ModuleWithProviders,
-  NgModule,
-  Optional,
-} from '@angular/core';
+import { Inject, ModuleWithProviders, NgModule, Optional } from '@angular/core';
 import { ZoomDirective } from './zoom.directive';
-import css from './styles/styles';
-
-interface NgZoomConfig {
-  backgroundColor?: string;
-}
-
-// InjectionToken (which prevents collisions) and useValue.
-const NgZoomConfigService = new InjectionToken<NgZoomConfig>('NgZoomConfig');
+import { injectStyles } from './styles/styles';
+import { defaultConfig, NgZoomConfigService } from './config.service';
+import type { NgZoomConfig } from './config.service';
 
 @NgModule({
   declarations: [ZoomDirective],
@@ -28,31 +17,22 @@ export class NgZoomModule {
     @Inject(NgZoomConfigService)
     private config: NgZoomConfig
   ) {
-    console.log(this.config);
-    this.injectStyles();
+    this.setConfig();
+    injectStyles(this.document, this.config);
   }
 
-  private injectStyles = () => {
-    const styles = this.document.createElement('style');
-    styles.innerHTML = css;
-
-    this.document.head.appendChild(styles);
-  };
-
-  static forRoot(config?: NgZoomConfig): ModuleWithProviders<NgZoomModule> {
-    const defaultConfig: NgZoomConfig = {
-      backgroundColor: '#fff',
-    };
-
-    if (!config) {
-      config = defaultConfig;
-    } else {
-      config = { ...defaultConfig, ...config };
-    }
-
+  static forRoot(config: NgZoomConfig): ModuleWithProviders<NgZoomModule> {
     return {
       ngModule: NgZoomModule,
       providers: [{ provide: NgZoomConfigService, useValue: config }],
     };
+  }
+
+  private setConfig(): void {
+    if (!this.config) {
+      this.config = defaultConfig;
+    } else {
+      this.config = { ...defaultConfig, ...this.config };
+    }
   }
 }
