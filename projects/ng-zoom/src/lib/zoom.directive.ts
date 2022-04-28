@@ -1,16 +1,19 @@
+import { ZoomService } from './zoom.service';
 import { Directive, ElementRef, HostListener } from '@angular/core';
 
 @Directive({
   selector: '[ng-zoom]',
 })
 export class ZoomDirective {
-  constructor(private el: ElementRef) {}
+  constructor(
+    private zoomService: ZoomService,
+    private el: ElementRef<HTMLImageElement>
+  ) {}
 
-  @HostListener('click') elClicked() {
-    console.log('clicker');
+  @HostListener('click')
+  onClick() {
+    this.zoomService.zoomIn(this.el);
   }
 
-  ngOnInit() {
-    console.log('ZoomDirective.ngOnInit');
-  }
+  ngOnInit() {}
 }

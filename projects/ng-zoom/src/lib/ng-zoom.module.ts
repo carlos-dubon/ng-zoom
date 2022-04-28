@@ -2,8 +2,11 @@ import { DOCUMENT } from '@angular/common';
 import { Inject, ModuleWithProviders, NgModule, Optional } from '@angular/core';
 import { ZoomDirective } from './zoom.directive';
 import { injectStyles } from './styles/styles';
-import { defaultConfig, NgZoomConfigService } from './config.service';
-import type { NgZoomConfig } from './config.service';
+import {
+  defaultConfig,
+  NgZoomConfigService,
+  NgZoomConfig,
+} from './config.service';
 
 @NgModule({
   declarations: [ZoomDirective],
