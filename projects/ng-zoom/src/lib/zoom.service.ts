@@ -2,8 +2,8 @@ import { DOCUMENT } from '@angular/common';
 import { Inject, Injectable, Optional } from '@angular/core';
 import { debounce } from 'throttle-debounce';
 import { ConfigService } from './config.service';
+import { getImageDimensions } from './helpers/getImageDimensions';
 import { getScale } from './helpers/getScale';
-import { sumStyleDeclarationValues } from './helpers/sumStyleDeclarationValues';
 
 @Injectable({
   providedIn: 'root',
@@ -38,25 +38,10 @@ export class ZoomService {
     const DOMRect = this.zoomedImage.getBoundingClientRect();
     const styleDeclaration = this.window.getComputedStyle(this.zoomedImage);
 
-    const imageWidth: number =
-      DOMRect.width -
-      sumStyleDeclarationValues(
-        styleDeclaration,
-        'borderLeftWidth',
-        'borderRightWidth',
-        'paddingLeft',
-        'paddingRight'
-      );
-
-    const imageHeight: number =
-      DOMRect.height -
-      sumStyleDeclarationValues(
-        styleDeclaration,
-        'borderTopWidth',
-        'borderBottomWidth',
-        'paddingTop',
-        'paddingBottom'
-      );
+    const [imageWidth, imageHeight] = getImageDimensions(
+      DOMRect,
+      styleDeclaration
+    );
 
     const vw: number = this.window.innerWidth;
     const vh: number = this.window.innerHeight;
