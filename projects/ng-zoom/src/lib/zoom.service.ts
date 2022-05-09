@@ -75,6 +75,35 @@ export class ZoomService {
 
       scale = Math.min(scale, limitedScale);
     }
+
+    const isPaddingNeeded: boolean =
+      this.configService.config.padding! >
+      Math.min(vh - imageHeight * scale, vw - imageWidth * scale) / 2;
+
+    if (isPaddingNeeded) {
+      let scaleWithPaddingBeforeScaleUp = getScale(
+        imageWidth + this.configService.config.padding!,
+        imageHeight + this.configService.config.padding!,
+        vw,
+        vh
+      );
+
+      if (!shouldScaleUp) {
+        const limitedScale = getScale(
+          imageWidth,
+          imageHeight,
+          this.zoomedImage.naturalWidth - this.configService.config.padding!,
+          this.zoomedImage.naturalHeight - this.configService.config.padding!
+        );
+
+        scaleWithPaddingBeforeScaleUp = Math.min(
+          scaleWithPaddingBeforeScaleUp,
+          limitedScale
+        );
+      }
+
+      scale = scaleWithPaddingBeforeScaleUp;
+    }
   }
 
   private zoomOut() {
