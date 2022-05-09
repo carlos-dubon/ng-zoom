@@ -18,6 +18,12 @@ export class ZoomService {
     this.window = this.document.defaultView as Window;
   }
 
+  private transitionComplete = false;
+
+  get isZoomed() {
+    return this.transitionComplete;
+  }
+
   handleClick = (el: HTMLImageElement | null) => {
     if (this.zoomedImage) {
       this.zoomOut();
@@ -40,7 +46,9 @@ export class ZoomService {
   };
 
   handleScroll = () => {
-    console.log('scrolled');
+    if (this.zoomedImage) {
+      this.zoomOut();
+    }
   };
 
   handleResize = () => {
@@ -125,6 +133,15 @@ export class ZoomService {
     this.zoomedImage.classList.add('ng-zoom-zoomed');
     this.zoomedImage.parentElement?.classList.add('ng-zoom-wrapper-zoomed');
     this.zoomedImage.style.transform = `scale(${scale}) translate(${translateX}px, ${translateY}px)`;
+    this.zoomedImage.addEventListener(
+      'transitionend',
+      () => {
+        this.transitionComplete = true;
+      },
+      {
+        once: true,
+      }
+    );
   }
 
   private zoomOut() {
@@ -135,6 +152,7 @@ export class ZoomService {
     this.zoomedImage.addEventListener(
       'transitionend',
       () => {
+        this.transitionComplete = false;
         this.zoomedImage?.classList.remove('ng-zoom-zoomed');
         this.zoomedImage = null;
       },

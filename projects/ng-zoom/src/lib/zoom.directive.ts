@@ -28,6 +28,13 @@ export class ZoomDirective {
     this.zoomService.handleClick(this.el.nativeElement);
   }
 
+  @HostListener('body:click')
+  onBody() {
+    if (this.zoomService.isZoomed) {
+      this.zoomService.handleClick(null);
+    }
+  }
+
   @HostListener('window:resize')
   onResize() {
     this.zoomService.handleResize();
