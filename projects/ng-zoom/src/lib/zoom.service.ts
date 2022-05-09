@@ -2,13 +2,14 @@ import { DOCUMENT } from '@angular/common';
 import { Inject, Injectable, Optional } from '@angular/core';
 import { debounce } from 'throttle-debounce';
 import { ConfigService } from './config.service';
+import { getScale } from './helpers/getScale';
 import { sumStyleDeclarationValues } from './helpers/sumStyleDeclarationValues';
 
 @Injectable({
   providedIn: 'root',
 })
 export class ZoomService {
-  private zoomedElement: HTMLElement | null = null;
+  private zoomedImage: HTMLImageElement | null = null;
   private window: Window;
 
   constructor(
@@ -18,26 +19,26 @@ export class ZoomService {
     this.window = this.document.defaultView as Window;
   }
 
-  handleClick = debounce(500, true, (el: HTMLElement | null) => {
-    if (this.zoomedElement) {
+  handleClick = debounce(500, true, (el: HTMLImageElement | null) => {
+    if (this.zoomedImage) {
       this.zoomOut();
-      this.zoomedElement = null;
+      this.zoomedImage = null;
       return;
     }
 
     if (el) {
-      this.zoomedElement = el;
+      this.zoomedImage = el;
       this.zoomIn();
     }
   });
 
   private zoomIn() {
-    if (!this.zoomedElement) return;
+    if (!this.zoomedImage) return;
 
-    const DOMRect = this.zoomedElement.getBoundingClientRect();
-    const styleDeclaration = this.window.getComputedStyle(this.zoomedElement);
+    const DOMRect = this.zoomedImage.getBoundingClientRect();
+    const styleDeclaration = this.window.getComputedStyle(this.zoomedImage);
 
-    const elWidth: number =
+    const imageWidth: number =
       DOMRect.width -
       sumStyleDeclarationValues(
         styleDeclaration,
@@ -47,7 +48,7 @@ export class ZoomService {
         'paddingRight'
       );
 
-    const elHeight: number =
+    const imageHeight: number =
       DOMRect.height -
       sumStyleDeclarationValues(
         styleDeclaration,
@@ -60,20 +61,31 @@ export class ZoomService {
     const vw: number = this.window.innerWidth;
     const vh: number = this.window.innerHeight;
 
-    console.log(this.configService.config);
+    const shouldScaleUp = this.configService.config.scaleUp;
+
+    let scale: number = getScale(imageWidth, imageHeight, vw, vh);
+
+    if (!shouldScaleUp) {
+      const limitedScale = getScale(
+        imageWidth,
+        imageHeight,
+        this.zoomedImage.naturalWidth,
+        this.zoomedImage.naturalHeight
+      );
+
+      scale = Math.min(scale, limitedScale);
+    }
   }
 
   private zoomOut() {
-    if (!this.zoomedElement) return;
+    if (!this.zoomedImage) return;
 
-    this.zoomedElement.style.transform = 'scale(1)';
-    this.zoomedElement.parentElement?.classList.remove(
-      'ng-zoom-wrapper-zoomed'
-    );
-    this.zoomedElement.addEventListener(
+    this.zoomedImage.style.transform = 'scale(1)';
+    this.zoomedImage.parentElement?.classList.remove('ng-zoom-wrapper-zoomed');
+    this.zoomedImage.addEventListener(
       'transitionend',
       () => {
-        this.zoomedElement?.classList.remove('ng-zoom-zoomed');
+        this.zoomedImage?.classList.remove('ng-zoom-zoomed');
       },
       {
         once: true,
