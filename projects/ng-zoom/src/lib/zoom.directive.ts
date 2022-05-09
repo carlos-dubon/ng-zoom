@@ -1,11 +1,5 @@
 import { ZoomService } from './zoom.service';
-import {
-  Directive,
-  ElementRef,
-  Host,
-  HostListener,
-  Inject,
-} from '@angular/core';
+import { Directive, ElementRef, HostListener, Inject } from '@angular/core';
 import { DOCUMENT } from '@angular/common';
 
 @Directive({
