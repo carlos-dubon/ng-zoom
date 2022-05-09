@@ -16,6 +16,11 @@ export interface NgZoomConfig {
    * @default `20`
    */
   padding?: number;
+  /**
+   * The duration of the zoom animation in milliseconds.
+   * @default `300`
+   */
+  duration?: number;
 }
 
 // InjectionToken (which prevents collisions) and useValue.
@@ -29,6 +34,7 @@ class ConfigService {
     backgroundColor: '#ffffff',
     scaleUp: true,
     padding: 20,
+    duration: 300,
   };
 
   private configValue: NgZoomConfig = this.defaultConfig;

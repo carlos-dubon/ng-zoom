@@ -1,9 +1,13 @@
 import { NgZoomConfig } from '../config.service';
 interface Props {
   backgroundColor?: string;
+  duration?: number;
 }
 
-const buildStyles = ({ backgroundColor = '#ffffff' }: Props) => {
+const buildStyles = ({
+  backgroundColor = '#ffffff',
+  duration = 300,
+}: Props) => {
   return /*css*/ `
   :root {
     overflow-x: hidden;
@@ -11,7 +15,7 @@ const buildStyles = ({ backgroundColor = '#ffffff' }: Props) => {
 
   .ng-zoom-wrapper::after {
     opacity: 0;
-    transition: opacity 150ms cubic-bezier(0.25, 0.1, 0.25, 1);
+    transition: opacity ${duration / 2}ms cubic-bezier(0.25, 0.1, 0.25, 1);
     display: block;
     content: "";
     position: fixed;
@@ -31,7 +35,7 @@ const buildStyles = ({ backgroundColor = '#ffffff' }: Props) => {
   }
 
   .ng-zoom {
-    transition: transform 300ms cubic-bezier(0.25, 0.1, 0.25, 1);
+    transition: transform ${duration}ms cubic-bezier(0.25, 0.1, 0.25, 1);
     cursor: zoom-in;
   }
 
@@ -45,7 +49,10 @@ const buildStyles = ({ backgroundColor = '#ffffff' }: Props) => {
 
 const injectStyles = (document: Document, config: NgZoomConfig): void => {
   const styles = document.createElement('style');
-  styles.innerHTML = buildStyles({ backgroundColor: config.backgroundColor });
+  styles.innerHTML = buildStyles({
+    backgroundColor: config.backgroundColor,
+    duration: config.duration,
+  });
   document.head.appendChild(styles);
 };
 
