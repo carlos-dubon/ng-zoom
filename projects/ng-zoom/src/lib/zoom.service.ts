@@ -40,21 +40,15 @@ export class ZoomService {
     if (event.code != 'Escape') return;
     event.preventDefault();
 
-    if (this.zoomedImage) {
-      this.zoomOut();
-    }
+    this.zoomOut();
   };
 
   handleScroll = () => {
-    if (this.zoomedImage) {
-      this.zoomOut();
-    }
+    this.zoomOut();
   };
 
   handleResize = () => {
-    if (this.zoomedImage) {
-      this.zoomOut();
-    }
+    this.zoomOut();
   };
 
   private zoomIn() {
