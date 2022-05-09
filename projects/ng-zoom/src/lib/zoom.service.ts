@@ -44,7 +44,9 @@ export class ZoomService {
   };
 
   handleResize = () => {
-    console.log('resized');
+    if (this.zoomedImage) {
+      this.zoomOut();
+    }
   };
 
   private zoomIn() {
