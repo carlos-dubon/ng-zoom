@@ -89,6 +89,25 @@ export class ZoomService {
 
       scale = scaleWithPaddingBeforeScaleUp;
     }
+
+    const doc = this.document.documentElement;
+    const scrollLeft =
+      (this.window.scrollX || doc.scrollLeft) - (doc.clientLeft || 0);
+    const scrollTop =
+      (this.window.scrollY || doc.scrollTop) - (doc.clientTop || 0);
+
+    const imageCenterX = scrollLeft + DOMRect.left + DOMRect.width / 2;
+    const imageCenterY = scrollTop + DOMRect.top + DOMRect.height / 2;
+
+    const screenCenterX = scrollLeft + vw / 2;
+    const screenCenterY = scrollTop + vh / 2;
+
+    const translateX = (screenCenterX - imageCenterX) / scale;
+    const translateY = (screenCenterY - imageCenterY) / scale;
+
+    this.zoomedImage.classList.add('ng-zoom-zoomed');
+    this.zoomedImage.parentElement?.classList.add('ng-zoom-wrapper-zoomed');
+    this.zoomedImage.style.transform = `scale(${scale}) translate(${translateX}px, ${translateY}px)`;
   }
 
   private zoomOut() {

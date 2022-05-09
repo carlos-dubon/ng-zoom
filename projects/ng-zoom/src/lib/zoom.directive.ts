@@ -7,7 +7,7 @@ import { Directive, ElementRef, HostListener } from '@angular/core';
 export class ZoomDirective {
   constructor(
     private zoomService: ZoomService,
-    private el: ElementRef<HTMLElement>
+    private el: ElementRef<HTMLImageElement>
   ) {}
 
   @HostListener('click')
