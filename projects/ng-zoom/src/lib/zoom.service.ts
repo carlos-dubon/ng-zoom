@@ -1,6 +1,5 @@
 import { DOCUMENT } from '@angular/common';
-import { Inject, Injectable, Optional } from '@angular/core';
-import { debounce } from 'throttle-debounce';
+import { Inject, Injectable } from '@angular/core';
 import { ConfigService } from './config.service';
 import { getImageDimensions } from './helpers/getImageDimensions';
 import { getScale } from './helpers/getScale';
@@ -19,10 +18,9 @@ export class ZoomService {
     this.window = this.document.defaultView as Window;
   }
 
-  handleClick = debounce(500, true, (el: HTMLImageElement | null) => {
+  handleClick = (el: HTMLImageElement | null) => {
     if (this.zoomedImage) {
       this.zoomOut();
-      this.zoomedImage = null;
       return;
     }
 
@@ -30,7 +28,7 @@ export class ZoomService {
       this.zoomedImage = el;
       this.zoomIn();
     }
-  });
+  };
 
   private zoomIn() {
     if (!this.zoomedImage) return;
@@ -119,6 +117,7 @@ export class ZoomService {
       'transitionend',
       () => {
         this.zoomedImage?.classList.remove('ng-zoom-zoomed');
+        this.zoomedImage = null;
       },
       {
         once: true,

@@ -26,7 +26,7 @@ const ConfigToken = new InjectionToken<NgZoomConfig>('NgZoomConfig');
 })
 class ConfigService {
   private defaultConfig: NgZoomConfig = {
-    backgroundColor: '#fffff',
+    backgroundColor: '#ffffff',
     scaleUp: true,
     padding: 20,
   };
