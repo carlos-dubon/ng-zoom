@@ -1,5 +1,11 @@
 import { ZoomService } from './zoom.service';
-import { Directive, ElementRef, HostListener, Inject } from '@angular/core';
+import {
+  Directive,
+  ElementRef,
+  Host,
+  HostListener,
+  Inject,
+} from '@angular/core';
 import { DOCUMENT } from '@angular/common';
 
 @Directive({
@@ -20,6 +26,21 @@ export class ZoomDirective {
   @HostListener('click')
   onClick() {
     this.zoomService.handleClick(this.el.nativeElement);
+  }
+
+  @HostListener('window:resize')
+  onResize() {
+    this.zoomService.handleResize();
+  }
+
+  @HostListener('window:keydown', ['$event'])
+  onKeydown(event: KeyboardEvent) {
+    this.zoomService.handleKeydown(event);
+  }
+
+  @HostListener('window:scroll')
+  onScroll() {
+    this.zoomService.handleScroll();
   }
 
   ngOnInit() {}

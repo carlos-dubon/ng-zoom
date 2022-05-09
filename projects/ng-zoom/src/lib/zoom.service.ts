@@ -30,6 +30,23 @@ export class ZoomService {
     }
   };
 
+  handleKeydown = (event: KeyboardEvent) => {
+    if (event.code != 'Escape') return;
+    event.preventDefault();
+
+    if (this.zoomedImage) {
+      this.zoomOut();
+    }
+  };
+
+  handleScroll = () => {
+    console.log('scrolled');
+  };
+
+  handleResize = () => {
+    console.log('resized');
+  };
+
   private zoomIn() {
     if (!this.zoomedImage) return;
 
