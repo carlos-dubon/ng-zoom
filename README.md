@@ -1,27 +1,71 @@
-# NgZoom
+# ng-zoom
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 13.3.3.
+> 🔍️ Image zoom directive for Angular based apps.
 
-## Development server
+## ✨ Features
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+- 👌 Zero-dependency
+- 🧬 Perfect for dynamic content, mutation-agnostic — you can do whatever you want with images, it'll work
+- ⚡️ Blazing fast — no matter if it's 10 images or 10,000
+- 🤓 Powered by quirky math to precisely calculate everything and do the trick with only one transformation
+- 🍦 Zero-configuration by default but extensible when you need it
+- 🗿 Works flawlessly even on iOS Safari, in every orientation, with every image no matter the size and dimensions
 
-## Code scaffolding
+## ☀️ License
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+[MIT](./LICENSE)
 
-## Build
+## 🖥 Environment Support
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
+- Angular `^13.0.0`
 
-## Running unit tests
+## 📦 Installation
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+```
+$ npm install ng-zoom
+```
 
-## Running end-to-end tests
+## 🔨 Usage
 
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
+Import the ng-zoom module into your `app.module.ts` file.
 
-## Further help
+```TypeScript
+import { NgZoomModule } from 'ng-zoom';
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+@NgModule({
+  imports: [NgZoomModule],
+})
+export class AppModule {}
+```
+
+Use the `ng-zoom` directive in your `.html` files.
+
+```HTML
+<img ng-zoom src="lake.png" alt="lake" />
+```
+
+## 🧰 Configuration
+
+Pass a `NgZoomConfig` object to the module `forRoot` method.
+
+```TypeScript
+import { NgZoomConfig, NgZoomModule } from 'ng-zoom';
+
+const config: NgZoomConfig = {
+  backgroundColor: 'skyblue',
+};
+
+@NgModule({
+  imports: [NgZoomModule.forRoot(config)],
+})
+export class AppModule {}
+```
+
+`NgZoomConfig` interface:
+
+| Property        | Description                                                                           | Type    | Default |
+| --------------- | ------------------------------------------------------------------------------------- | ------- | ------- |
+| backgroundColor | The background color of the wrapper element.                                          | string  | #ffffff |
+| scaleUp         | Defines if an element should be scaled up when zooming or maintain its original size. | boolean | true    |
+| padding         | Padding in pixels                                                                     | number  | 20      |
+| duration        | The duration of the zoom animation in milliseconds.                                   | number  | 300     |

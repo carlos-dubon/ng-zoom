@@ -1,0 +1,33 @@
+# This workflow will
+# - delete ./dist/ng-zoom/README.md
+# - copy ./README.md into ./dist/ng-zoom
+# - publish to NPM
+# when a release is created
+
+name: NPM publish
+
+on:
+  release:
+    types: [created]
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v1
+      - uses: actions/setup-node@v1
+        with:
+          node-version: 16
+      - run: yarn install
+      - run: npx ng build ng-zoom
+      - uses: JesseTG/rm@v1.0.2
+        with:
+          path: /dist/ng-zoom/README.md
+      - uses: canastro/copy-file-action@master
+        with:
+          source: "README.md"
+          target: "dist/ng-zoom/README.md"
+      - uses: JS-DevTools/npm-publish@v1
+        with:
+          token: ${{ secrets.NPM_AUTH_TOKEN }}
+          package: ./dist/ng-zoom/package.json

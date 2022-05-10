@@ -1,6 +1,21 @@
 {
   "name": "ng-zoom",
-  "version": "0.0.1",
+  "version": "2.0.0",
+  "description": "🔍️ Image zoom directive for Angular based apps.",
+  "keywords": [
+    "ng-zoom",
+    "image",
+    "angular",
+    "image-zoom-on-click"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/carlos-dubon/ng-zoom.git"
+  },
+  "author": "carlos-dubon",
+  "bugs": {
+    "url": "https://github.com/carlos-dubon/ng-zoom/issues"
+  },
   "peerDependencies": {
     "@angular/common": "^13.3.0",
     "@angular/core": "^13.3.0"
