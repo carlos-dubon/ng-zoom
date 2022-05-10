@@ -1,6 +1,6 @@
 {
   "name": "ng-zoom",
-  "version": "2.0.0",
+  "version": "2.0.1",
   "description": "🔍️ Image zoom directive for Angular based apps.",
   "keywords": [
     "ng-zoom",
@@ -16,6 +16,7 @@
   "bugs": {
     "url": "https://github.com/carlos-dubon/ng-zoom/issues"
   },
+  "homepage": "https://stackblitz.com/edit/angular-ivy-714775?file=src/app/app.module.ts",
   "peerDependencies": {
     "@angular/common": "^13.3.0",
     "@angular/core": "^13.3.0"

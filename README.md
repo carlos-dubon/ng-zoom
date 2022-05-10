@@ -2,6 +2,13 @@
 
 > 🔍️ Image zoom directive for Angular based apps.
 
+<center>
+  <img src=".github/readme/demo.gif" alt="demo"></img>
+
+<a href="https://stackblitz.com/edit/angular-ivy-714775?file=src%2Fapp%2Fapp.module.ts" target="_blank">Example app</a>
+
+</center>
+
 ## ✨ Features
 
 - 👌 Zero-dependency
@@ -46,7 +53,7 @@ Use the `ng-zoom` directive in your `.html` files.
 
 ## 🧰 Configuration
 
-Pass a `NgZoomConfig` object to the module `forRoot` method.
+Pass a `NgZoomConfig` object to the module's `forRoot` method.
 
 ```TypeScript
 import { NgZoomConfig, NgZoomModule } from 'ng-zoom';
@@ -61,7 +68,7 @@ const config: NgZoomConfig = {
 export class AppModule {}
 ```
 
-`NgZoomConfig` interface:
+#### Options:
 
 | Property        | Description                                                                           | Type    | Default |
 | --------------- | ------------------------------------------------------------------------------------- | ------- | ------- |
