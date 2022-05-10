@@ -2,12 +2,13 @@
 
 > 🔍️ Image zoom directive for Angular based apps.
 
-<center>
-  <img src=".github/readme/demo.gif" alt="demo"></img>
+<p align="center">
+  <img src=".github/readme/demo.gif" alt="demo" />
+</p>
 
+<p align="center">
 <a href="https://stackblitz.com/edit/angular-ivy-714775?file=src%2Fapp%2Fapp.module.ts" target="_blank">Example app</a>
-
-</center>
+</p>
 
 ## ✨ Features
 
