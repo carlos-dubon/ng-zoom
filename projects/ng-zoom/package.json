@@ -1,12 +1,12 @@
 {
   "name": "ng-zoom",
-  "version": "2.0.1",
+  "version": "2.0.2",
   "description": "🔍️ Image zoom directive for Angular based apps.",
   "keywords": [
     "ng-zoom",
-    "image",
-    "angular",
-    "image-zoom-on-click"
+    "angular-image-zoom",
+    "image-zoom",
+    "angular-zoom"
   ],
   "repository": {
     "type": "git",
