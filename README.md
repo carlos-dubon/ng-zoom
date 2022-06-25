@@ -71,9 +71,9 @@ export class AppModule {}
 
 #### Options:
 
-| Property        | Description                                                                           | Type    | Default |
-| --------------- | ------------------------------------------------------------------------------------- | ------- | ------- |
-| backgroundColor | The background color of the wrapper element.                                          | string  | #ffffff |
-| scaleUp         | Defines if an element should be scaled up when zooming or maintain its original size. | boolean | true    |
-| padding         | Padding in pixels                                                                     | number  | 20      |
-| duration        | The duration of the zoom animation in milliseconds.                                   | number  | 300     |
+| Property        | Type    | Default | Description                                                                           |
+| --------------- | ------- | ------- | ------------------------------------------------------------------------------------- |
+| backgroundColor | string  | #ffffff | The background color of the wrapper element.                                          |
+| scaleUp         | boolean | true    | Defines if an element should be scaled up when zooming or maintain its original size. |
+| padding         | number  | 20      | Padding in pixels                                                                     |
+| duration        | number  | 300     | The duration of the zoom animation in milliseconds.                                   |
