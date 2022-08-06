@@ -6,10 +6,9 @@
 
 <div align="center">
   <video
-    src="https://user-images.githubusercontent.com/69093659/183231110-6bf40b31-1828-4ff7-b80d-710ba86a0332.mov"
+    src="https://user-images.githubusercontent.com/69093659/183260253-305a1e18-6f37-4206-bdbb-22395b303e23.mp4"
     autoplay
     loop
-    style="max-width: 520px; outline: none;"
   ></video>
 </div>
 
