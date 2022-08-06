@@ -6,7 +6,7 @@
 
 <div align="center">
   <video
-    src=".github/readme/ng-zoom-demo.mov"
+    src="https://user-images.githubusercontent.com/69093659/183231110-6bf40b31-1828-4ff7-b80d-710ba86a0332.mov"
     autoplay="autoplay"
     loop="loop"
     muted="muted"
