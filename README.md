@@ -68,7 +68,7 @@ $ npm install ng-zoom
 
 ## 🔨 Usage
 
-Import the `NgZoomModule` module into the `app.module.ts` file.
+Import the ng-zoom module into the `app.module.ts` file.
 
 ```TypeScript
 import { NgZoomModule } from 'ng-zoom';
