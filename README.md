@@ -1,14 +1,49 @@
-# ng-zoom
+<h1 align="center">ng-zoom 🔍️</h1>
 
-> 🔍️ Image zoom directive for Angular based apps.
-
-<p align="center">
-  <img src=".github/readme/demo.gif" alt="demo" />
+<p align="center" style="font-size: 1.2rem">
+  Image zoom directive for Angular based apps.
 </p>
 
-<p align="center">
-<a href="https://stackblitz.com/edit/angular-ivy-714775?file=src%2Fapp%2Fapp.module.ts" target="_blank">Example app</a>
-</p>
+<div align="center">
+  <video
+    src=".github/readme/ng-zoom-demo.mov"
+    autoplay="autoplay"
+    loop="loop"
+    muted="muted"
+    style="max-width: 520px; outline: none;"
+  ></video>
+</div>
+
+<div align="center">
+  <a
+    href="https://stackblitz.com/edit/angular-ivy-714775?file=src%2Fapp%2Fapp.module.ts"
+  >
+    <b style="font-size: 1.2rem">StackBlitz Demo</b>
+  </a>
+</div>
+
+<hr />
+
+<img
+  src="https://img.shields.io/github/stars/carlos-dubon/ng-zoom?style=flat-square"
+  alt="Stars"
+/>
+<img
+  src="https://img.shields.io/github/forks/carlos-dubon/ng-zoom?style=flat-square"
+  alt="Forks"
+/>
+<img
+  src="https://img.shields.io/github/issues/carlos-dubon/ng-zoom?style=flat-square"
+  alt="Issues"
+/>
+<img
+  src="https://img.shields.io/npm/dt/ng-zoom?style=flat-square"
+  alt="NPM downloads"
+/>
+<img
+  src="https://img.shields.io/github/license/carlos-dubon/ng-zoom?style=flat-square"
+  alt="License"
+/>
 
 ## ✨ Features
 
@@ -19,7 +54,7 @@
 - 🍦 Zero-configuration by default but extensible when you need it
 - 🗿 Works flawlessly even on iOS Safari, in every orientation, with every image no matter the size and dimensions
 
-## ☀️ License
+## 🔑 License
 
 [MIT](./LICENSE)
 
@@ -35,7 +70,7 @@ $ npm install ng-zoom
 
 ## 🔨 Usage
 
-Import the ng-zoom module into your `app.module.ts` file.
+1. Import the `NgZoomModule` module into the `app.module.ts` file.
 
 ```TypeScript
 import { NgZoomModule } from 'ng-zoom';
@@ -46,13 +81,13 @@ import { NgZoomModule } from 'ng-zoom';
 export class AppModule {}
 ```
 
-Use the `ng-zoom` directive in your `.html` files.
+2. Use the `ng-zoom` directive in your `.html` files.
 
 ```HTML
 <img ng-zoom src="lake.png" alt="lake" />
 ```
 
-## 🧰 Configuration
+## ⚙️ Configuration
 
 Pass a `NgZoomConfig` object to the module's `forRoot` method.
 
@@ -69,11 +104,11 @@ const config: NgZoomConfig = {
 export class AppModule {}
 ```
 
-#### Options:
+## 🏷️ `NgZoomConfig` reference
 
-| Property        | Type    | Default | Description                                                                           |
-| --------------- | ------- | ------- | ------------------------------------------------------------------------------------- |
-| backgroundColor | string  | #ffffff | The background color of the wrapper element.                                          |
-| scaleUp         | boolean | true    | Defines if an element should be scaled up when zooming or maintain its original size. |
-| padding         | number  | 20      | Padding in pixels                                                                     |
-| duration        | number  | 300     | The duration of the zoom animation in milliseconds.                                   |
+| Property        | Type      | Default | Description                                                                           |
+| --------------- | --------- | ------- | ------------------------------------------------------------------------------------- |
+| backgroundColor | `string`  | #ffffff | The background color of the wrapper element.                                          |
+| scaleUp         | `boolean` | true    | Defines if an element should be scaled up when zooming or maintain its original size. |
+| padding         | `number`  | 20      | Padding in pixels                                                                     |
+| duration        | `number`  | 300     | The duration of the zoom animation in milliseconds.                                   |
