@@ -16,7 +16,7 @@
 
 <div align="center">
   <a
-    href="https://stackblitz.com/edit/angular-ivy-714775?file=src%2Fapp%2Fapp.module.ts"
+    href="https://stackblitz.com/edit/angular-ivy-vgauuz?file=src%2Fapp%2Fapp.component.ts"
   >
     <b style="font-size: 1.2rem">StackBlitz Demo</b>
   </a>
@@ -104,7 +104,7 @@ const config: NgZoomConfig = {
 export class AppModule {}
 ```
 
-## 🏷️ `NgZoomConfig` reference
+## 🏷️ Config reference
 
 | Property        | Type      | Default | Description                                                                           |
 | --------------- | --------- | ------- | ------------------------------------------------------------------------------------- |
