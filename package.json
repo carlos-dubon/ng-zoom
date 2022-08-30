@@ -1,6 +1,6 @@
 {
   "name": "ng-zoom",
-  "version": "0.0.0",
+  "version": "0.0.0-development",
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
@@ -9,8 +9,7 @@
     "test": "ng test",
     "serve:example": "ng serve",
     "build:example": "ng build example",
-    "build:lib": "ng build ng-zoom",
-    "publish:lib": "ng build ng zoom && cd dist/ng-zoom && npm publish"
+    "semantic-release": "semantic-release --branches main"
   },
   "private": true,
   "dependencies": {
@@ -30,6 +29,9 @@
     "@angular-devkit/build-angular": "~13.3.3",
     "@angular/cli": "~13.3.3",
     "@angular/compiler-cli": "~13.3.0",
+    "@semantic-release/commit-analyzer": "^9.0.2",
+    "@semantic-release/npm": "^9.0.1",
+    "@semantic-release/release-notes-generator": "^10.0.3",
     "@types/jasmine": "~3.10.0",
     "@types/node": "^12.11.1",
     "@types/throttle-debounce": "^4.0.0",
@@ -40,6 +42,11 @@
     "karma-jasmine": "~4.0.0",
     "karma-jasmine-html-reporter": "~1.7.0",
     "ng-packagr": "^13.0.0",
+    "semantic-release": "^19.0.5",
     "typescript": "~4.6.2"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/carlos-dubon/ng-zoom.git"
   }
 }
