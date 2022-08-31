@@ -13,7 +13,7 @@ module.exports = {
         }],
         "@semantic-release/release-notes-generator",
         ["@semantic-release/npm", {
-            "pkgRoot": "./projects/ng-zoom"
+            "pkgRoot": "dist",
         }],
     ],
 
