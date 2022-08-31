@@ -39,7 +39,6 @@ export class ZoomService {
   handleKeydown = (event: KeyboardEvent) => {
     if (event.code != 'Escape') return;
     event.preventDefault();
-
     this.zoomOut();
   };
 
